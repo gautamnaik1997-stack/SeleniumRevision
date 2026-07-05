@@ -7,7 +7,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/company/project.git'
+                    url: 'https://github.com/gautamnaik1997-stack/SeleniumRevision.git'
             }
         }
 
