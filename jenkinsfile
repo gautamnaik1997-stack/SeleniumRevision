@@ -36,7 +36,7 @@ pipeline {
 
         archiveArtifacts artifacts: 'reports/**'
         archiveArtifacts artifacts: 'logs/**'
-        archiveArtifacts artifacts: 'Screenshots/**'
+        archiveArtifacts artifacts: 'screenshots/**'
 
         }
 
