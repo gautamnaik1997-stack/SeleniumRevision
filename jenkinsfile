@@ -25,7 +25,7 @@ pipeline {
 
         stage('Publish Results') {
             steps {
-                junit '**/reports/*.xml'
+                 junit 'target/surefire-reports/*.xml'
             }
         }
     }
@@ -34,7 +34,9 @@ pipeline {
 
         always {
 
-            archiveArtifacts artifacts: 'test-output/**'
+        archiveArtifacts artifacts: 'reports/**'
+        archiveArtifacts artifacts: 'logs/**'
+        archiveArtifacts artifacts: 'Screenshots/**'
 
         }
 
