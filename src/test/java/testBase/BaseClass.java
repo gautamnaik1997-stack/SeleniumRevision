@@ -18,6 +18,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -42,6 +43,9 @@ public static WebDriver getDriver() {
 		p=new Properties();
 		FileReader file = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\config.properties");
 		p.load(file);
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless=new");
+		
 		
 		if(p.getProperty("executiontype").equals("remote")) {
 			String huburl = "http://localhost:4444";
@@ -65,7 +69,7 @@ public static WebDriver getDriver() {
 		
 		if(p.getProperty("executiontype").equals("local")) {
 		switch(br) {
-		case "Chrome": driver.set(new ChromeDriver());break;
+		case "Chrome": driver.set(new ChromeDriver(options));break;
 		case "Edge" : driver.set(new EdgeDriver());break;
 		case "Firefox" : driver.set(new FirefoxDriver());break;
 		default: System.out.println("Invaid browser name");return;
