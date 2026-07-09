@@ -89,11 +89,11 @@ public class ExtentReportsManager implements ITestListener {
 		String filepath = System.getProperty("user.dir") + "\\reports\\" + repName;
 		File repfile = new File(filepath);
 		
-		try {
+		/* try {
 			Desktop.getDesktop().browse(repfile.toURI());
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} */
 		
 		
 	}
