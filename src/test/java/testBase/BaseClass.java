@@ -45,7 +45,7 @@ public static WebDriver getDriver() {
 		
 		String browser = System.getProperty("browser", br);
 		if(browser == null || browser.trim().isEmpty()) {
-			browser = "Chrome";
+			browser = "Edge";
 		}
 		
 		String executionType = System.getProperty("executionType",p.getProperty("executiontype"));
@@ -85,7 +85,7 @@ public static WebDriver getDriver() {
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		getDriver().get("appURL");
+		getDriver().get(p.getProperty("appURL"));
 	}
 	
 	@AfterClass(alwaysRun=true)
