@@ -1,106 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="0" failed="2" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-06-26T20:44:08 IST" name="Suite" finished-at="2026-06-26T20:44:41 IST" duration-ms="32773">
+  <suite started-at="2026-07-10T19:49:08 IST" name="Suite" finished-at="2026-07-10T19:49:16 IST" duration-ms="7260">
     <groups>
       <group name="Master">
         <method signature="TC001_Login.verifyLogin()[pri:0, instance:testCase.TC001_Login@682b2fa]" name="verifyLogin" class="testCase.TC001_Login"/>
-        <method signature="TC001_Login.verifyLogin()[pri:0, instance:testCase.TC001_Login@6200f9cb]" name="verifyLogin" class="testCase.TC001_Login"/>
       </group> <!-- Master -->
       <group name="Sanity">
         <method signature="TC001_Login.verifyLogin()[pri:0, instance:testCase.TC001_Login@682b2fa]" name="verifyLogin" class="testCase.TC001_Login"/>
-        <method signature="TC001_Login.verifyLogin()[pri:0, instance:testCase.TC001_Login@6200f9cb]" name="verifyLogin" class="testCase.TC001_Login"/>
       </group> <!-- Sanity -->
       <group name="Regression">
         <method signature="TC001_Login.verifyLogin()[pri:0, instance:testCase.TC001_Login@682b2fa]" name="verifyLogin" class="testCase.TC001_Login"/>
-        <method signature="TC001_Login.verifyLogin()[pri:0, instance:testCase.TC001_Login@6200f9cb]" name="verifyLogin" class="testCase.TC001_Login"/>
       </group> <!-- Regression -->
     </groups>
-    <test started-at="2026-06-26T20:44:08 IST" name="ChromeTest" finished-at="2026-06-26T20:44:26 IST" duration-ms="17704">
+    <test started-at="2026-07-10T19:49:08 IST" name="ChromeTest" finished-at="2026-07-10T19:49:16 IST" duration-ms="7260">
       <class name="testCase.TC001_Login">
-        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:testCase.TC001_Login@682b2fa]" started-at="2026-06-26T20:44:08 IST" name="setup" finished-at="2026-06-26T20:44:14 IST" duration-ms="5333" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Windows]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[Chrome]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verifyLogin()[pri:0, instance:testCase.TC001_Login@682b2fa]" started-at="2026-06-26T20:44:14 IST" name="verifyLogin" finished-at="2026-06-26T20:44:25 IST" duration-ms="11555" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//h2[normalize-space()='My Account']"}
-  (Session info: chrome=149.0.7827.196)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.10'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [caf9285c660c2d81d6acaa5e7a2efa22, findElement {using=xpath, value=//h2[normalize-space()='My Account']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.196, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\GAUTAM\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58028}, goog:processID: 11244, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58028/devtoo..., se:cdpVersion: 149.0.7827.196, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: caf9285c660c2d81d6acaa5e7a2efa22]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: no such element: Unable to locate element: {"method":"xpath","selector":"//h2[normalize-space()='My Account']"}
-  (Session info: chrome=149.0.7827.196)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.10'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [caf9285c660c2d81d6acaa5e7a2efa22, findElement {using=xpath, value=//h2[normalize-space()='My Account']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.196, chrome: {chromedriverVersion: 149.0.7827.155 (07b52360cc1..., userDataDir: C:\Users\GAUTAM\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58028}, goog:processID: 11244, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58028/devtoo..., se:cdpVersion: 149.0.7827.196, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: caf9285c660c2d81d6acaa5e7a2efa22
-at org.testng.Assert.fail(Assert.java:111)
-at testCase.TC001_Login.verifyLogin(TC001_Login.java:51)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:744)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLogin -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:testCase.TC001_Login@682b2fa]" started-at="2026-06-26T20:44:26 IST" name="teardown" finished-at="2026-06-26T20:44:26 IST" duration-ms="271" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-      </class> <!-- testCase.TC001_Login -->
-    </test> <!-- ChromeTest -->
-    <test started-at="2026-06-26T20:44:26 IST" name="EdgeTest" finished-at="2026-06-26T20:44:41 IST" duration-ms="14588">
-      <class name="testCase.TC001_Login">
-        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:testCase.TC001_Login@6200f9cb]" started-at="2026-06-26T20:44:26 IST" name="setup" finished-at="2026-06-26T20:44:29 IST" duration-ms="2743" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:testCase.TC001_Login@682b2fa]" started-at="2026-07-10T19:49:09 IST" name="setup" finished-at="2026-07-10T19:49:13 IST" duration-ms="4006" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -116,68 +32,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyLogin()[pri:0, instance:testCase.TC001_Login@6200f9cb]" started-at="2026-06-26T20:44:29 IST" name="verifyLogin" finished-at="2026-06-26T20:44:40 IST" duration-ms="10982" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//h2[normalize-space()='My Account']"}
-  (Session info: MicrosoftEdge=149.0.4022.80)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.10'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [40c32ad3c5e8eb043c3e34b2ff65e1c2, findElement {using=xpath, value=//h2[normalize-space()='My Account']}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 149.0.4022.80, fedcm:accounts: true, goog:processID: 18660, ms:edgeOptions: {debuggerAddress: localhost:53031}, msedge: {msedgedriverVersion: 149.0.4022.96 (62a32af5f9fc..., userDataDir: C:\Users\GAUTAM\AppData\Loc...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53031/devtoo..., se:cdpVersion: 149.0.4022.80, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 40c32ad3c5e8eb043c3e34b2ff65e1c2]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: no such element: Unable to locate element: {"method":"xpath","selector":"//h2[normalize-space()='My Account']"}
-  (Session info: MicrosoftEdge=149.0.4022.80)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.10'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [40c32ad3c5e8eb043c3e34b2ff65e1c2, findElement {using=xpath, value=//h2[normalize-space()='My Account']}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 149.0.4022.80, fedcm:accounts: true, goog:processID: 18660, ms:edgeOptions: {debuggerAddress: localhost:53031}, msedge: {msedgedriverVersion: 149.0.4022.96 (62a32af5f9fc..., userDataDir: C:\Users\GAUTAM\AppData\Loc...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53031/devtoo..., se:cdpVersion: 149.0.4022.80, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 40c32ad3c5e8eb043c3e34b2ff65e1c2
-at org.testng.Assert.fail(Assert.java:111)
-at testCase.TC001_Login.verifyLogin(TC001_Login.java:51)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:744)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="verifyLogin()[pri:0, instance:testCase.TC001_Login@682b2fa]" started-at="2026-07-10T19:49:13 IST" name="verifyLogin" finished-at="2026-07-10T19:49:15 IST" duration-ms="2692" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLogin -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:testCase.TC001_Login@6200f9cb]" started-at="2026-06-26T20:44:40 IST" name="teardown" finished-at="2026-06-26T20:44:41 IST" duration-ms="644" status="PASS">
+        <test-method is-config="true" signature="teardown()[pri:0, instance:testCase.TC001_Login@682b2fa]" started-at="2026-07-10T19:49:15 IST" name="teardown" finished-at="2026-07-10T19:49:16 IST" duration-ms="269" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
       </class> <!-- testCase.TC001_Login -->
-    </test> <!-- EdgeTest -->
+    </test> <!-- ChromeTest -->
   </suite> <!-- Suite -->
 </testng-results>

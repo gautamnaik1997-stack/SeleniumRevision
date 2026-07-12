@@ -40,14 +40,22 @@ public static WebDriver getDriver() {
 	@BeforeClass(alwaysRun=true)
 	public void setup(String os, String br) throws IOException {
 		logger = LogManager.getLogger(this.getClass());
-		p=new Properties();
-		FileReader file = new FileReader(System.getProperty("user.dir") + "\\src\\test\\resources\\config.properties");
-		p.load(file);
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless=new");
 		
+		String browser = System.getProperty("browser", br);
+		if(browser == null || browser.trim().isEmpty()) {
+			browser = "Chrome";
+		}
 		
-		if(p.getProperty("executiontype").equals("remote")) {
+		String executionType = System.getProperty("executionType",p.getProperty("executiontype"));
+		String environment = System.getProperty("environment", "QA");
+		String configFile  = System.getProperty("user.dir") + "\\src\\test\\resources\\config\\" + environment.toLowerCase() + ".properties";
+		p=new Properties();
+		FileReader file = new FileReader(configFile);
+		p.load(file);
+		
+		if(executionType.equalsIgnoreCase("remote")) {
 			String huburl = "http://localhost:4444";
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			switch(os){
@@ -57,7 +65,7 @@ public static WebDriver getDriver() {
 			default: System.out.println("invaid platform");return;
 			}
 			
-			switch(br) {
+			switch(browser) {
 			case "Chrome": capabilities.setBrowserName("chrome"); break;
 			case "Edge": capabilities.setBrowserName("MicrosoftEdge"); break;
 			case "Firefox": capabilities.setBrowserName("firefox"); break;
@@ -67,8 +75,8 @@ public static WebDriver getDriver() {
 			driver.set(new RemoteWebDriver(new URL(huburl), capabilities));
 		}
 		
-		if(p.getProperty("executiontype").equals("local")) {
-		switch(br) {
+		if(executionType.equalsIgnoreCase("local")) {
+		switch(browser) {
 		case "Chrome": driver.set(new ChromeDriver(options));break;
 		case "Edge" : driver.set(new EdgeDriver());break;
 		case "Firefox" : driver.set(new FirefoxDriver());break;
@@ -77,7 +85,7 @@ public static WebDriver getDriver() {
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		getDriver().get(p.getProperty("appUrl"));
+		getDriver().get("appURL");
 	}
 	
 	@AfterClass(alwaysRun=true)
