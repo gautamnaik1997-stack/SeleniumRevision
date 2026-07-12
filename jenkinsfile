@@ -1,4 +1,3 @@
-import groovy.util.XmlSlurper
 
 //====================================================
 // Notification Configuration
@@ -145,130 +144,6 @@ def getExecutionInfoTable() {
  """
 }
 //====================================================
-//Test Summary
-//====================================================
-
-def getTestSummaryTable() {
-
- try {
-
-     def resultsFile =
-     "${env.WORKSPACE}/target/surefire-reports/testng-results.xml"
-
-     if (!fileExists(resultsFile)) {
-
-         return """
-         <h3 style="color:red;">Test Summary</h3>
-
-         <p>
-         TestNG results were not generated.
-         The build may have failed before test execution.
-         </p>
-         """
-     }
-
-     def xmlText = readFile(file: 'target/surefire-reports/testng-results.xml')
-	 def xml = new XmlSlurper().parseText(xmlText)
-
-	def attributes = xml.attributes()
-
-	def total    = attributes["total"]
-	def passed   = attributes["passed"]
-	def failed   = attributes["failed"]
-	def skipped  = attributes["skipped"]
-
-     return """
-
-     <h3 style="color:#2E86C1;">
-     Test Summary
-     </h3>
-
-     <table border="1"
-            cellpadding="6"
-            cellspacing="0"
-            style="border-collapse:collapse;width:60%;">
-
-         <tr style="background:#F2F2F2;">
-
-             <th>Metric</th>
-
-             <th>Count</th>
-
-         </tr>
-
-         <tr>
-
-             <td><b>Total</b></td>
-
-             <td>${total}</td>
-
-         </tr>
-
-         <tr>
-
-             <td><b>Passed</b></td>
-
-             <td style="color:green;">
-             ${passed}
-             </td>
-
-         </tr>
-
-         <tr>
-
-             <td><b>Failed</b></td>
-
-             <td style="color:red;">
-             ${failed}
-             </td>
-
-         </tr>
-
-         <tr>
-
-             <td><b>Skipped</b></td>
-
-             <td style="color:orange;">
-             ${skipped}
-             </td>
-
-         </tr>
-
-     </table>
-
-     """
-
- }
-
- catch(Exception e) {
-
-     return """
-
-     <h3 style="color:red;">
-
-     Test Summary
-
-     </h3>
-
-     <p>
-
-     Unable to parse TestNG results.
-
-     <br>
-
-     Error:
-
-     ${e.getMessage()}
-
-     </p>
-
-     """
-
- }
-
-}
-
-//====================================================
 //Email Notification
 //====================================================
 
@@ -311,7 +186,7 @@ def sendNotification(String status) {
 
      <br>
 
-     ${getTestSummaryTable()}
+     ${readFile(file: 'reports/TestSummary.html')}
 
      <hr>
 
@@ -495,6 +370,19 @@ pipeline {
             """
 
         }
+
+    }
+
+   stage('Generate Test Summary') {
+
+    steps {
+
+		bat """
+		mvn exec:java ^
+		-Denvironment=${params.ENVIRONMENT}	
+		"""
+
+         }
 
     }
     

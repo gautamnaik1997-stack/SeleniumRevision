@@ -26,6 +26,17 @@
           </suiteXmlFiles>
           </configuration>
         </plugin>
+
+        <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.5.0</version>
+
+    <configuration>
+        <mainClass>utils.TestSummaryRunner</mainClass>
+         <classpathScope>test</classpathScope>
+    </configuration>
+	</plugin>
          </plugins>
    </pluginManagement>
    </build>
