@@ -4,8 +4,8 @@ import groovy.util.XmlSlurper
 // Notification Configuration
 //====================================================
 
-def notificationConfig = [
-
+def notificationConfig() [
+ return[
     SUCCESS: [
         color             : "green",
         message           : "Automation executed successfully.",
@@ -33,6 +33,7 @@ def notificationConfig = [
         attachments       : "reports/*.html,logs/*.log",
         attachConsoleLog  : true
     ]
+  ]
 ]
 		
 		//====================================================
@@ -271,7 +272,7 @@ def getTestSummaryTable() {
 
 def sendNotification(String status) {
 
- def config = notificationConfig[status]
+ def config = getNotificationConfig()[status]
 
  emailext(
 
