@@ -1,4 +1,4 @@
-import groovy.xml.XmlSlurper
+import groovy.util.XmlSlurper
 
 //====================================================
 // Notification Configuration
@@ -166,7 +166,8 @@ def getTestSummaryTable() {
          """
      }
 
-     def xml = new XmlSlurper().parse(new File(resultsFile))
+     def xmlText = readFile(file: 'target/surefire-reports/testng-results.xml')
+	 def xml = new XmlSlurper().parseText(xmlText)
 
      def total   = xml.@total.text()
      def passed  = xml.@passed.text()
