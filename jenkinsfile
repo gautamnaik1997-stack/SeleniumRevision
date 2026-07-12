@@ -392,6 +392,12 @@ pipeline {
             choices: ['QA','UAT'],
             description: 'Target Environment'
         )
+	
+	 choice(
+            name: 'HEADLESS',
+            choices: ['true','false'],
+            description: 'Headless Execution'
+        )
 
     }
 
@@ -469,6 +475,8 @@ pipeline {
             bat """
 
             mvn clean test ^
+	
+	    -Dheadless=${params.HEADLESS} ^
 
             -Dbrowser=${params.BROWSER} ^
 
