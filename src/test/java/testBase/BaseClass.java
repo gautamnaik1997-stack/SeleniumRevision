@@ -58,9 +58,13 @@ public static WebDriver getDriver() {
 		if (headless==true) {
 		    chromeOptions.addArguments("--headless=new");
 		    chromeOptions.addArguments("--window-size=1920,1080");
+		    chromeOptions.addArguments("--disable-dev-shm-usage");
+		    chromeOptions.addArguments("--no-sandbox");
 		    
 		    edgeOptions.addArguments("--headless=new");
 		    edgeOptions.addArguments("--window-size=1920,1080");
+		    edgeOptions.addArguments("--disable-dev-shm-usage");
+		    edgeOptions.addArguments("--no-sandbox");
 		    
 		    firefoxOptions.addArguments("--headless");
 		    firefoxOptions.addArguments("--width=1920");
@@ -70,24 +74,24 @@ public static WebDriver getDriver() {
 		if(browser == null || browser.trim().isEmpty()) {
 			browser = "Edge";
 		}
-		if(executionType.equalsIgnoreCase("remote")) {
-			String huburl = "http://localhost:4444";
-			DesiredCapabilities capabilities = new DesiredCapabilities();
-			switch(os){
-			case "Windows": capabilities.setPlatform(Platform.WIN11);break;
-			case "Mac": capabilities.setPlatform(Platform.MAC);break;
-			case "linux": capabilities.setPlatform(Platform.LINUX);break;
-			default: System.out.println("invaid platform");return;
-			}
-			
-			switch(browser) {
-			case "Chrome": capabilities.setBrowserName("chrome"); break;
-			case "Edge": capabilities.setBrowserName("MicrosoftEdge"); break;
-			case "Firefox": capabilities.setBrowserName("firefox"); break;
-			default: System.out.println("invalid browser"); return;
-			}
-			
-			driver.set(new RemoteWebDriver(new URL(huburl), capabilities));
+		
+		if (executionType.equalsIgnoreCase("remote")) {
+		    String hubUrl = "http://localhost:4444";
+		    switch (browser) {
+		    case "Chrome": chromeOptions.setPlatformName(os);
+		    driver.set(new RemoteWebDriver(new URL(hubUrl),chromeOptions));
+		    break;
+		    
+		    case "Edge": edgeOptions.setPlatformName(os);
+            driver.set(new RemoteWebDriver(new URL(hubUrl),edgeOptions));
+            break;
+            
+		    case "Firefox": firefoxOptions.setPlatformName(os);
+            driver.set(new RemoteWebDriver(new URL(hubUrl),firefoxOptions));
+		    break;
+
+		    default: throw new IllegalArgumentException("Invalid Browser : " + browser);
+		    }
 		}
 		
 		if(executionType.equalsIgnoreCase("local")) {

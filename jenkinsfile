@@ -431,8 +431,6 @@ pipeline {
                 currentBuild.description =
 
                 """
-
-		Headless : ${params.HEADLESS}
 		
                 Browser : ${params.BROWSER}
 
@@ -441,6 +439,8 @@ pipeline {
                 Execution : ${params.EXECUTION_TYPE}
 
                 Suite : ${params.SUITEXMLFILE}
+
+		Headless : ${params.HEADLESS}
 
                 """
 
@@ -456,8 +456,6 @@ pipeline {
 
             echo "===================================="
 
-	    echo "Headless       : ${params.HEADLESS}"
-
             echo "Browser        : ${params.BROWSER}"
 
             echo "Environment    : ${params.ENVIRONMENT}"
@@ -465,6 +463,8 @@ pipeline {
             echo "Execution Type : ${params.EXECUTION_TYPE}"
 
             echo "Suite          : ${params.SUITEXMLFILE}"
+	
+	    echo "Headless       : ${params.HEADLESS}"
 
             echo "===================================="
 
@@ -479,8 +479,6 @@ pipeline {
             bat """
 
             mvn clean test ^
-	
-	    -Dheadless=${params.HEADLESS} ^
 
             -Dbrowser=${params.BROWSER} ^
 
@@ -488,7 +486,9 @@ pipeline {
 
             -Denvironment=${params.ENVIRONMENT} ^
 
-            -DexecutionType=${params.EXECUTION_TYPE}
+            -DexecutionType=${params.EXECUTION_TYPE} ^
+
+	    -Dheadless=${params.HEADLESS} 
 
             """
 
