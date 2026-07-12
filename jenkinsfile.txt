@@ -351,6 +351,9 @@ pipeline {
         // Uncomment if Poll SCM is required
 
         // pollSCM('H/10 * * * *')
+	
+	// This activates the GitHub webhook trigger:
+        githubPush()
 
     }
     
