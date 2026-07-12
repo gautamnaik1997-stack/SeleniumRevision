@@ -4,7 +4,7 @@ import groovy.util.XmlSlurper
 // Notification Configuration
 //====================================================
 
-def notificationConfig() [
+def notificationConfig() {
  return[
     SUCCESS: [
         color             : "green",
@@ -34,7 +34,7 @@ def notificationConfig() [
         attachConsoleLog  : true
     ]
   ]
-]
+}
 		
 		//====================================================
 		// Build Information
