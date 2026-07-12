@@ -279,22 +279,14 @@ pipeline {
     }
 
     stages{
-    stage('Checkout Source') {
-
-        steps {
-
-            git(
-
-                branch: 'master',
-
-                url: 'https://github.com/gautamnaik1997-stack/SeleniumRevision.git'
-
-            )
-
-        }
-
+	
+    stage('Verify Branch') {
+    steps {
+        bat 'git branch'
+        bat 'git log --oneline -1'
     }
-    
+    }
+      
     stage('Initialize Build') {
 
         steps {
