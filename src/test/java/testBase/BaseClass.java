@@ -40,21 +40,20 @@ public static WebDriver getDriver() {
 	@BeforeClass(alwaysRun=true)
 	public void setup(String os, String br) throws IOException {
 		logger = LogManager.getLogger(this.getClass());
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless=new");
-		
-		String browser = System.getProperty("browser", br);
-		if(browser == null || browser.trim().isEmpty()) {
-			browser = "Edge";
-		}
-		
-		String executionType = System.getProperty("executionType",p.getProperty("executiontype"));
 		String environment = System.getProperty("environment", "QA");
 		String configFile  = System.getProperty("user.dir") + "\\src\\test\\resources\\config\\" + environment.toLowerCase() + ".properties";
 		p=new Properties();
 		FileReader file = new FileReader(configFile);
 		p.load(file);
+		String browser = System.getProperty("browser", br);
+		String executionType = System.getProperty("executionType",p.getProperty("executiontype"));
 		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless=new");
+		
+		if(browser == null || browser.trim().isEmpty()) {
+			browser = "Edge";
+		}
 		if(executionType.equalsIgnoreCase("remote")) {
 			String huburl = "http://localhost:4444";
 			DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -90,8 +89,10 @@ public static WebDriver getDriver() {
 	
 	@AfterClass(alwaysRun=true)
 	public void teardown() {
+		if(getDriver()!=null){
 		getDriver().quit();
 		driver.remove();
+		}
 	}
 	
 	public static String captureScreen(String tname) throws IOException {
