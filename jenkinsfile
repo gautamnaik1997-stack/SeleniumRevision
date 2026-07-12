@@ -315,7 +315,7 @@ def sendNotification(String status) {
 
      Regards,
 
-     <br><br>
+     <br/>
 
      QA Automation Team
 
@@ -392,7 +392,8 @@ pipeline {
         )
 
     }
-    
+
+    stages{
     stage('Checkout Source') {
 
         steps {
@@ -489,7 +490,7 @@ pipeline {
 
         }
 
-    }
+    }}
     
     post {
 
