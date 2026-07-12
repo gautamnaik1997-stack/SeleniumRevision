@@ -432,6 +432,8 @@ pipeline {
 
                 """
 
+		Headless : ${params.HEADLESS}
+		
                 Browser : ${params.BROWSER}
 
                 Environment : ${params.ENVIRONMENT}
@@ -453,6 +455,8 @@ pipeline {
         steps {
 
             echo "===================================="
+
+	    echo "Headless       : ${params.HEADLESS}"
 
             echo "Browser        : ${params.BROWSER}"
 
