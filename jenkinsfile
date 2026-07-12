@@ -170,10 +170,12 @@ def getTestSummaryTable() {
      def xmlText = readFile(file: 'target/surefire-reports/testng-results.xml')
 	 def xml = new XmlSlurper().parseText(xmlText)
 
-     def total   = xml.@total.text()
-     def passed  = xml.@passed.text()
-     def failed  = xml.@failed.text()
-     def skipped = xml.@skipped.text()
+	def attributes = xml.attributes()
+
+	def total    = attributes["total"]
+	def passed   = attributes["passed"]
+	def failed   = attributes["failed"]
+	def skipped  = attributes["skipped"]
 
      return """
 
