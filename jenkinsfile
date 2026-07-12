@@ -4,7 +4,7 @@ import groovy.util.XmlSlurper
 // Notification Configuration
 //====================================================
 
-def notificationConfig() {
+def getNotificationConfig() {
  return[
     SUCCESS: [
         color             : "green",
