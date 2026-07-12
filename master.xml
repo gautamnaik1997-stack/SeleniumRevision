@@ -6,7 +6,7 @@
 </listeners>
   <test name="ChromeTest">
   <parameter name="OS" value="Windows"></parameter>
-  <parameter name="Browser" value="Edge"></parameter>
+  <parameter name="Browser" value="Chrome"></parameter>
     <classes>
       <class name="testCase.TC001_Login"/>
       <!--<class name="testCase.TC002_Register"/>-->

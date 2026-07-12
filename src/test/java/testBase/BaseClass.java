@@ -20,7 +20,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -47,9 +49,23 @@ public static WebDriver getDriver() {
 		p.load(file);
 		String browser = System.getProperty("browser", br);
 		String executionType = System.getProperty("executionType",p.getProperty("executiontype"));
+		boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 		
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless=new");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		EdgeOptions edgeOptions = new EdgeOptions();
+		FirefoxOptions firefoxOptions = new FirefoxOptions();
+		
+		if (headless==true) {
+		    chromeOptions.addArguments("--headless=new");
+		    chromeOptions.addArguments("--window-size=1920,1080");
+		    
+		    edgeOptions.addArguments("--headless=new");
+		    edgeOptions.addArguments("--window-size=1920,1080");
+		    
+		    firefoxOptions.addArguments("--headless");
+		    firefoxOptions.addArguments("--width=1920");
+		    firefoxOptions.addArguments("--height=1080");
+		}
 		
 		if(browser == null || browser.trim().isEmpty()) {
 			browser = "Edge";
@@ -76,15 +92,25 @@ public static WebDriver getDriver() {
 		
 		if(executionType.equalsIgnoreCase("local")) {
 		switch(browser) {
-		case "Chrome": driver.set(new ChromeDriver(options));break;
-		case "Edge" : driver.set(new EdgeDriver());break;
-		case "Firefox" : driver.set(new FirefoxDriver());break;
+		case "Chrome": driver.set(new ChromeDriver(chromeOptions));break;
+		case "Edge" : driver.set(new EdgeDriver(edgeOptions));break;
+		case "Firefox" : driver.set(new FirefoxDriver(firefoxOptions));break;
 		default: System.out.println("Invaid browser name");return;
 		}}
+		
+		if (getDriver() == null) {
+		    throw new RuntimeException(
+		        "WebDriver was not initialized. Browser = " + browser +
+		        ", ExecutionType = " + executionType
+		    );
+		}
+		
 		getDriver().manage().deleteAllCookies();
-		getDriver().manage().window().maximize();
+		if (headless==false) {
+		    getDriver().manage().window().maximize();
+		}
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		getDriver().get(p.getProperty("appURL"));
+		getDriver().get(p.getProperty("appUrl"));
 	}
 	
 	@AfterClass(alwaysRun=true)

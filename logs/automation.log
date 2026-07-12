@@ -2627,3 +2627,17 @@ Session ID: 40c32ad3c5e8eb043c3e34b2ff65e1c2
 19:34:27.771 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
 19:49:13.063 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
 19:49:15.734 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:25:39.823 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:25:42.650 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:26:20.305 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:26:23.337 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:28:05.661 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:28:08.067 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:28:41.303 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:28:43.531 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:29:55.607 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:29:57.613 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:33:31.614 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:33:33.642 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+18:33:56.645 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+18:33:58.691 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
