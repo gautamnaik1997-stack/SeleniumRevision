@@ -1,4 +1,3 @@
-import groovy.util.XmlSlurper
 
 //====================================================
 // Notification Configuration
@@ -108,6 +107,14 @@ def getNotificationConfig() {
 
 def getExecutionInfoTable() {
 
+def browserDisplay = params.BROWSER
+if (params.SUITEXMLFILE == 'paralleltesting.xml') {
+    browserDisplay = 'Chrome | Edge | Firefox (Parallel)'
+}
+else if (params.SUITEXMLFILE == 'crossbrowsertesting.xml') {
+    browserDisplay = 'Chrome → Edge → Firefox'
+}
+
  return """
  <h3 style="color:#2E86C1;">Execution Information</h3>
 
@@ -123,7 +130,7 @@ def getExecutionInfoTable() {
 
      <tr>
          <td><b>Browser</b></td>
-         <td>${params.BROWSER}</td>
+         <td>${browserDisplay}</td>
      </tr>
 
      <tr>
@@ -144,6 +151,7 @@ def getExecutionInfoTable() {
  </table>
  """
 }
+
 //====================================================
 //Test Summary
 //====================================================
@@ -311,7 +319,7 @@ def sendNotification(String status) {
 
      <br>
 
-     ${getTestSummaryTable()}
+     ${readFile(file: 'reports/TestSummary.html')}
 
      <hr>
 
@@ -357,7 +365,7 @@ pipeline {
         // pollSCM('H/10 * * * *')
 	
 	// This activates the GitHub webhook trigger:
-        githubPush()
+   //     githubPush()
 
     }
     
@@ -384,7 +392,7 @@ pipeline {
                 'regression.xml',
                 'paralleltesting.xml',
 		'grouping.xml',
-		'crossbrowser.xml'
+		'crossbrowsertesting.xml'
             ],
             description: 'Select TestNG Suite'
         )
@@ -404,22 +412,14 @@ pipeline {
     }
 
     stages{
-    stage('Checkout Source') {
-
-        steps {
-
-            git(
-
-                branch: 'master',
-
-                url: 'https://github.com/gautamnaik1997-stack/SeleniumRevision.git'
-
-            )
-
-        }
-
+	
+    stage('Verify Branch') {
+    steps {
+        bat 'git branch'
+        bat 'git log --oneline -1'
     }
-    
+    }
+      
     stage('Initialize Build') {
 
         steps {
@@ -478,11 +478,21 @@ pipeline {
 
         steps {
 
+	script{
+
+	    def browserProperty = ""
+		
+	    if (!(params.SUITEXMLFILE in ['paralleltesting.xml', 'crossbrowsertesting.xml'])) {
+                browserProperty = "-Dbrowser=${params.BROWSER}"
+            }
+
+
+
             bat """
 
             mvn clean test ^
-
-            -Dbrowser=${params.BROWSER} ^
+	
+	    ${browserProperty} ^
 
             -DsuiteXmlFile=${params.SUITEXMLFILE} ^
 
@@ -494,7 +504,20 @@ pipeline {
 
             """
 
-        }
+        }}
+
+    }
+
+   stage('Generate Test Summary') {
+
+    steps {
+
+		bat """
+		mvn exec:java ^
+		-Denvironment=${params.ENVIRONMENT}	
+		"""
+
+         }
 
     }
     
