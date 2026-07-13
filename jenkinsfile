@@ -319,7 +319,7 @@ def sendNotification(String status) {
 
      <br>
 
-     ${readFile(file: 'reports/TestSummary.html')}
+     ${getTestSummaryTable()}
 
      <hr>
 
