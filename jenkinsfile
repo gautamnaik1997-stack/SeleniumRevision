@@ -355,19 +355,6 @@ pipeline {
         EMAIL_TO = 'gautamnaik124@gmail.com'
 
     }
-
-    triggers {
-
-        // cron('H 2 * * *')
-
-        // Uncomment if Poll SCM is required
-
-        // pollSCM('H/10 * * * *')
-	
-	// This activates the GitHub webhook trigger:
-   //     githubPush()
-
-    }
     
     parameters {
 
@@ -505,19 +492,6 @@ pipeline {
             """
 
         }}
-
-    }
-
-   stage('Generate Test Summary') {
-
-    steps {
-
-		bat """
-		mvn exec:java ^
-		-Denvironment=${params.ENVIRONMENT}	
-		"""
-
-         }
 
     }
     
