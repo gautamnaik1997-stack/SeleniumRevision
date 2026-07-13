@@ -107,6 +107,14 @@ def getNotificationConfig() {
 
 def getExecutionInfoTable() {
 
+def browserDisplay = params.BROWSER
+if (params.SUITEXMLFILE == 'paralleltesting.xml') {
+    browserDisplay = 'Chrome | Edge | Firefox (Parallel)'
+}
+else if (params.SUITEXMLFILE == 'crossbrowsertesting.xml') {
+    browserDisplay = 'Chrome → Edge → Firefox'
+}
+
  return """
  <h3 style="color:#2E86C1;">Execution Information</h3>
 
@@ -122,7 +130,7 @@ def getExecutionInfoTable() {
 
      <tr>
          <td><b>Browser</b></td>
-         <td>${params.BROWSER}</td>
+         <td>${browserDisplay}</td>
      </tr>
 
      <tr>
@@ -345,11 +353,21 @@ pipeline {
 
         steps {
 
+	script{
+
+	    def browserProperty = ""
+		
+	    if (!(params.SUITEXMLFILE in ['paralleltesting.xml', 'crossbrowsertesting.xml'])) {
+                browserProperty = "-Dbrowser=${params.BROWSER}"
+            }
+
+
+
             bat """
 
             mvn clean test ^
-
-            -Dbrowser=${params.BROWSER} ^
+	
+	    ${browserProperty} ^
 
             -DsuiteXmlFile=${params.SUITEXMLFILE} ^
 
@@ -361,7 +379,7 @@ pipeline {
 
             """
 
-        }
+        }}
 
     }
 
