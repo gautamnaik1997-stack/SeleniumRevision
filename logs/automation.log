@@ -2643,3 +2643,7 @@ Session ID: 40c32ad3c5e8eb043c3e34b2ff65e1c2
 18:33:58.691 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
 22:52:38.663 [main] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
 22:52:41.185 [main] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+00:23:49.951 [TestNG-tests-2] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+00:23:50.122 [TestNG-tests-1] INFO  testCase.TC001_Login - ***** Starting verifyLogin *****
+00:23:52.822 [TestNG-tests-2] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****
+00:23:52.847 [TestNG-tests-1] INFO  testCase.TC001_Login - ***** Ending verifyLogin *****

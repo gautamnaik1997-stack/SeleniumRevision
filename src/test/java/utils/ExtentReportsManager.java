@@ -41,7 +41,7 @@ public class ExtentReportsManager implements ITestListener {
 		extent.setSystemInfo("Module", "Admin");
 		extent.setSystemInfo("sub module", "Customer");
 		
-		String className = testcontext.getClass().getName();
+		String className = testcontext.getName();
 		extent.setSystemInfo("TestCase", className);
 		
 		String operatingsystem = testcontext.getCurrentXmlTest().getParameter("OS");
